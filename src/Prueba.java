@@ -38,6 +38,16 @@ class Ventana extends JFrame {
 		JLabel lblA=new JLabel("A    ");
 			lblA.setFont(new Font("Arial", 3, 15));
 		add(lblA);
+		
+		comboSalida=new JComboBox<String>();
+			comboSalida.addItem("-------------------");
+			comboSalida.setFont(new Font("Time New Romans", 0, 15));
+			comboSalida.setEnabled(false);
+		add(comboSalida);
+		
+		
+		
+		
 	}
 }
 public class Prueba {
