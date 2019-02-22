@@ -12,7 +12,7 @@ class Ventana extends JFrame implements ActionListener {
 	public Ventana() {
 		getContentPane().setLayout(new FlowLayout());
 		setTitle("Conversor Temperaturas");
-		setSize(290, 170);
+		setSize(355, 170);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setVisible(true);
@@ -21,7 +21,7 @@ class Ventana extends JFrame implements ActionListener {
 		
 		
 		JLabel lblSeparador1=new JLabel("                               "
-				+ "                               ");
+				+ "                                                     ");
 			lblSeparador1.setFont(new Font("Arial", 3, 15));
 		add(lblSeparador1);
 		
@@ -31,7 +31,7 @@ class Ventana extends JFrame implements ActionListener {
 		add(lblConvertir);
 		
 		
-		txtFTempEntrada=new JTextField(5);
+		txtFTempEntrada=new JTextField(10);
 			txtFTempEntrada.setFont(new Font("Time New Romans", 0, 15));
 		add(txtFTempEntrada);
 		
@@ -48,6 +48,8 @@ class Ventana extends JFrame implements ActionListener {
 				public void actionPerformed(ActionEvent e) {
 					if(comboEntrada.getSelectedItem().equals("-------------------")){
 						txtFTempSalida.setText("");
+						comboSalida.removeAllItems();
+						comboSalida.addItem("-------------------");
 						comboSalida.setEnabled(false);
 					}
 					else if(comboEntrada.getSelectedItem().equals("° Centigrados")){
@@ -88,7 +90,7 @@ class Ventana extends JFrame implements ActionListener {
 		
 		
 		JLabel lblSeparador2=new JLabel("                               "
-				+ "                               ");
+				+ "                                                     ");
 			lblSeparador2.setFont(new Font("Arial", 3, 15));
 		add(lblSeparador2);
 		
@@ -102,6 +104,106 @@ class Ventana extends JFrame implements ActionListener {
 			comboSalida.addItem("-------------------");
 			comboSalida.setFont(new Font("Time New Romans", 0, 15));
 			comboSalida.setEnabled(false);
+			comboSalida.setSelectedItem("-------------------");
+			comboSalida.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					double tempEntrada=Double.parseDouble(txtFTempEntrada.getText());
+					double tempSalida;
+					
+					
+					if(comboSalida.getSelectedItem()==null){
+						txtFTempSalida.setText("");
+					}
+					else{
+						if(comboSalida.getSelectedItem().equals("-------------------")){
+							txtFTempSalida.setText("");
+							System.out.println("blanco");
+						}
+						else if(comboEntrada.getSelectedItem().equals("° Centigrados") &&
+								comboSalida.getSelectedItem().equals("° Fahrenheit")){
+							tempSalida=(tempEntrada*1.8)+32;
+							txtFTempSalida.setText(String.valueOf(tempSalida));
+							System.out.println("CF");
+						}
+						else if(comboEntrada.getSelectedItem().equals("° Centigrados") &&
+								comboSalida.getSelectedItem().equals("° Kelvil")){
+							tempSalida=tempEntrada+273.15;
+							txtFTempSalida.setText(String.valueOf(tempSalida));
+							System.out.println("CK");
+						}
+						else if(comboEntrada.getSelectedItem().equals("° Centigrados") &&
+								comboSalida.getSelectedItem().equals("° Rankine")){
+							tempSalida=(tempEntrada*1.8)+491.67;
+							txtFTempSalida.setText(String.valueOf(tempSalida));
+							System.out.println("CR");
+						}
+						
+						
+						
+						else if(comboEntrada.getSelectedItem().equals("° Fahrenheit") &&
+								comboSalida.getSelectedItem().equals("° Centigrados")){
+							tempSalida=((tempEntrada-32)/1.8);
+							txtFTempSalida.setText(String.valueOf(tempSalida));
+							System.out.println("FC");
+						}
+						else if(comboEntrada.getSelectedItem().equals("° Fahrenheit") &&
+								comboSalida.getSelectedItem().equals("° Kelvil")){
+							tempSalida=(tempEntrada*(5/9))+273.15;
+							txtFTempSalida.setText(String.valueOf(tempSalida));
+							System.out.println("FK");
+						}
+						else if(comboEntrada.getSelectedItem().equals("° Fahrenheit") &&
+								comboSalida.getSelectedItem().equals("° Rankine")){
+							tempSalida=tempEntrada+459.67;
+							txtFTempSalida.setText(String.valueOf(tempSalida));
+							System.out.println("FR");
+						}
+						
+						
+						
+						else if(comboEntrada.getSelectedItem().equals("° Kelvil") &&
+								comboSalida.getSelectedItem().equals("° Centigrados")){
+							tempSalida=tempEntrada-273.15;
+							txtFTempSalida.setText(String.valueOf(tempSalida));
+							System.out.println("KC");
+						}
+						else if(comboEntrada.getSelectedItem().equals("° Kelvil") &&
+								comboSalida.getSelectedItem().equals("° Fahrenheit")){
+							tempSalida=((tempEntrada-273.15)*1.8)+32;
+							txtFTempSalida.setText(String.valueOf(tempSalida));
+							System.out.println("KF");
+						}
+						else if(comboEntrada.getSelectedItem().equals("° Kelvil") &&
+								comboSalida.getSelectedItem().equals("° Rankine")){
+							tempSalida=tempEntrada*1.8;
+							txtFTempSalida.setText(String.valueOf(tempSalida));
+							System.out.println("KR");
+						}
+						
+						
+						
+						else if(comboEntrada.getSelectedItem().equals("° Rankine") &&
+								comboSalida.getSelectedItem().equals("° Centigrados")){
+							tempSalida=(tempEntrada-491.67)*(5/9);
+							txtFTempSalida.setText(String.valueOf(tempSalida));
+							System.out.println("RC");
+						}
+						else if(comboEntrada.getSelectedItem().equals("° Rankine") &&
+								comboSalida.getSelectedItem().equals("° Fahrenheit")){
+							tempSalida=tempEntrada-459.67;
+							txtFTempSalida.setText(String.valueOf(tempSalida));
+							System.out.println("RF");
+						}
+						else if(comboEntrada.getSelectedItem().equals("° Rankine") &&
+								comboSalida.getSelectedItem().equals("° Kelvil")){
+							tempSalida=tempEntrada*(5/9);
+							txtFTempSalida.setText(String.valueOf(tempSalida));
+							System.out.println("RK");
+						}
+					}
+				}
+			});
 		add(comboSalida);
 		
 		
@@ -110,7 +212,7 @@ class Ventana extends JFrame implements ActionListener {
 		add(lblIgual);
 		
 		
-		txtFTempSalida=new JTextField(5);
+		txtFTempSalida=new JTextField(10);
 			txtFTempSalida.setFont(new Font("Time New Romans", 0, 15));
 			txtFTempSalida.setEditable(false);
 		add(txtFTempSalida);
