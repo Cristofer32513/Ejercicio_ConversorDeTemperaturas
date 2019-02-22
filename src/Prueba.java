@@ -2,12 +2,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 
 @SuppressWarnings("serial")
 class Ventana extends JFrame implements ActionListener {
 	
 	JTextField txtFTempEntrada, txtFTempSalida;
 	JComboBox<String> comboEntrada, comboSalida;
+	DecimalFormat redondear =new DecimalFormat("###,###,##0.####");
 	
 	public Ventana() {
 		getContentPane().setLayout(new FlowLayout());
@@ -162,7 +164,8 @@ class Ventana extends JFrame implements ActionListener {
 							else if(comboEntrada.getSelectedItem().equals("° Rankine") &&
 									comboSalida.getSelectedItem().equals("° Kelvil"))
 								tempSalida=tempEntrada/1.8;
-							txtFTempSalida.setText(String.valueOf(tempSalida));
+							
+							txtFTempSalida.setText(redondear.format(tempSalida));
 						}
 					}
 				}
