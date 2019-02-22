@@ -45,7 +45,9 @@ class Ventana extends JFrame {
 			comboSalida.setEnabled(false);
 		add(comboSalida);
 		
-		
+		JLabel lblIgual=new JLabel("   =   ");
+			lblIgual.setFont(new Font("Arial", 3, 15));
+		add(lblIgual);
 		
 		
 	}
