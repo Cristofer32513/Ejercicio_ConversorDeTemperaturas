@@ -15,6 +15,15 @@ class Ventana extends JFrame {
 		setResizable(false);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		
+		
+		JLabel lblConvertir=new JLabel("Convertir");
+			lblConvertir.setFont(new Font("Arial", 3, 15));
+		add(lblConvertir);
+		
+		
+		
 	}
 }
 public class Prueba {
