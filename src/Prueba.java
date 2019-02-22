@@ -18,6 +18,11 @@ class Ventana extends JFrame {
 		
 		
 		
+		JLabel lblSeparador1=new JLabel("                               "
+				+ "                               ");
+			lblSeparador1.setFont(new Font("Arial", 3, 15));
+		add(lblSeparador1);
+		
 		JLabel lblConvertir=new JLabel("Convertir");
 			lblConvertir.setFont(new Font("Arial", 3, 15));
 		add(lblConvertir);
