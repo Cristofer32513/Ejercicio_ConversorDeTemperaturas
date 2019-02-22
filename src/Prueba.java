@@ -49,7 +49,10 @@ class Ventana extends JFrame {
 			lblIgual.setFont(new Font("Arial", 3, 15));
 		add(lblIgual);
 		
-		
+		txtFTempSalida=new JTextField(5);
+			txtFTempSalida.setFont(new Font("Time New Romans", 0, 15));
+			txtFTempSalida.setEditable(false);
+		add(txtFTempSalida);
 	}
 }
 public class Prueba {
