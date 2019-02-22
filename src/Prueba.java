@@ -1,8 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 @SuppressWarnings("serial")
-class Ventana extends JFrame {
+class Ventana extends JFrame implements ActionListener {
 	
 	JTextField txtFTempEntrada, txtFTempSalida;
 	JComboBox<String> comboEntrada, comboSalida;
@@ -41,6 +43,47 @@ class Ventana extends JFrame {
 			comboEntrada.addItem("° Kelvil");
 			comboEntrada.addItem("° Rankine");
 			comboEntrada.setFont(new Font("Time New Romans", 0, 15));
+			comboEntrada.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if(comboEntrada.getSelectedItem().equals("-------------------")){
+						txtFTempSalida.setText("");
+						comboSalida.setEnabled(false);
+					}
+					else if(comboEntrada.getSelectedItem().equals("° Centigrados")){
+						comboSalida.removeAllItems();
+						comboSalida.setEnabled(true);
+						comboSalida.addItem("-------------------");
+						comboSalida.addItem("° Fahrenheit");
+						comboSalida.addItem("° Kelvil");
+						comboSalida.addItem("° Rankine");
+					}
+					else if(comboEntrada.getSelectedItem().equals("° Fahrenheit")){
+						comboSalida.removeAllItems();
+						comboSalida.setEnabled(true);
+						comboSalida.addItem("-------------------");
+						comboSalida.addItem("° Centigrados");
+						comboSalida.addItem("° Kelvil");
+						comboSalida.addItem("° Rankine");
+					}
+					else if(comboEntrada.getSelectedItem().equals("° Kelvil")){
+						comboSalida.removeAllItems();
+						comboSalida.setEnabled(true);
+						comboSalida.addItem("-------------------");
+						comboSalida.addItem("° Centigrados");
+						comboSalida.addItem("° Fahrenheit");
+						comboSalida.addItem("° Rankine");
+					}
+					else if(comboEntrada.getSelectedItem().equals("° Rankine")){
+						comboSalida.removeAllItems();
+						comboSalida.setEnabled(true);
+						comboSalida.addItem("-------------------");
+						comboSalida.addItem("° Centigrados");
+						comboSalida.addItem("° Fahrenheit");
+						comboSalida.addItem("° Kelvil");
+					}
+				}
+			});
 		add(comboEntrada);
 		
 		
@@ -71,6 +114,11 @@ class Ventana extends JFrame {
 			txtFTempSalida.setFont(new Font("Time New Romans", 0, 15));
 			txtFTempSalida.setEditable(false);
 		add(txtFTempSalida);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		
 	}
 }
 public class Prueba {
