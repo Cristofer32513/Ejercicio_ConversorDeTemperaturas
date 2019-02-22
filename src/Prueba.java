@@ -23,13 +23,16 @@ class Ventana extends JFrame {
 			lblSeparador1.setFont(new Font("Arial", 3, 15));
 		add(lblSeparador1);
 		
+		
 		JLabel lblConvertir=new JLabel("Convertir");
 			lblConvertir.setFont(new Font("Arial", 3, 15));
 		add(lblConvertir);
 		
+		
 		txtFTempEntrada=new JTextField(5);
 			txtFTempEntrada.setFont(new Font("Time New Romans", 0, 15));
 		add(txtFTempEntrada);
+		
 		
 		comboEntrada=new JComboBox<String>();
 			comboEntrada.addItem("-------------------");
@@ -40,14 +43,17 @@ class Ventana extends JFrame {
 			comboEntrada.setFont(new Font("Time New Romans", 0, 15));
 		add(comboEntrada);
 		
+		
 		JLabel lblSeparador2=new JLabel("                               "
 				+ "                               ");
 			lblSeparador2.setFont(new Font("Arial", 3, 15));
 		add(lblSeparador2);
 		
+		
 		JLabel lblA=new JLabel("A    ");
 			lblA.setFont(new Font("Arial", 3, 15));
 		add(lblA);
+		
 		
 		comboSalida=new JComboBox<String>();
 			comboSalida.addItem("-------------------");
@@ -55,9 +61,11 @@ class Ventana extends JFrame {
 			comboSalida.setEnabled(false);
 		add(comboSalida);
 		
+		
 		JLabel lblIgual=new JLabel("   =   ");
 			lblIgual.setFont(new Font("Arial", 3, 15));
 		add(lblIgual);
+		
 		
 		txtFTempSalida=new JTextField(5);
 			txtFTempSalida.setFont(new Font("Time New Romans", 0, 15));
