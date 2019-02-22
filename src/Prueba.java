@@ -143,13 +143,13 @@ class Ventana extends JFrame implements ActionListener {
 						
 						else if(comboEntrada.getSelectedItem().equals("° Fahrenheit") &&
 								comboSalida.getSelectedItem().equals("° Centigrados")){
-							tempSalida=((tempEntrada-32)/1.8);
+							tempSalida=(tempEntrada-32)/1.8;
 							txtFTempSalida.setText(String.valueOf(tempSalida));
 							System.out.println("FC");
 						}
 						else if(comboEntrada.getSelectedItem().equals("° Fahrenheit") &&
 								comboSalida.getSelectedItem().equals("° Kelvil")){
-							tempSalida=(tempEntrada*(5/9))+273.15;
+							tempSalida=(tempEntrada+459.67)/1.8;
 							txtFTempSalida.setText(String.valueOf(tempSalida));
 							System.out.println("FK");
 						}
@@ -185,7 +185,7 @@ class Ventana extends JFrame implements ActionListener {
 						
 						else if(comboEntrada.getSelectedItem().equals("° Rankine") &&
 								comboSalida.getSelectedItem().equals("° Centigrados")){
-							tempSalida=(tempEntrada-491.67)*(5/9);
+							tempSalida=(tempEntrada-491.67)/1.8;
 							txtFTempSalida.setText(String.valueOf(tempSalida));
 							System.out.println("RC");
 						}
@@ -197,7 +197,7 @@ class Ventana extends JFrame implements ActionListener {
 						}
 						else if(comboEntrada.getSelectedItem().equals("° Rankine") &&
 								comboSalida.getSelectedItem().equals("° Kelvil")){
-							tempSalida=tempEntrada*(5/9);
+							tempSalida=tempEntrada/1.8;
 							txtFTempSalida.setText(String.valueOf(tempSalida));
 							System.out.println("RK");
 						}
