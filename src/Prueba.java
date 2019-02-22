@@ -22,6 +22,9 @@ class Ventana extends JFrame {
 			lblConvertir.setFont(new Font("Arial", 3, 15));
 		add(lblConvertir);
 		
+		txtFTempEntrada=new JTextField(5);
+			txtFTempEntrada.setFont(new Font("Time New Romans", 0, 15));
+		add(txtFTempEntrada);
 		
 		
 	}
