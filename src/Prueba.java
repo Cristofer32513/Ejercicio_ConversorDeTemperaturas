@@ -2,14 +2,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.text.DecimalFormat;
 
 @SuppressWarnings("serial")
-class Ventana extends JFrame implements ActionListener {
+class Ventana extends JFrame implements ActionListener, KeyListener {
 	
 	JTextField txtFTempEntrada, txtFTempSalida;
 	JComboBox<String> comboEntrada, comboSalida;
 	DecimalFormat redondear =new DecimalFormat("###,###,##0.####");
+	String respaldo="";
 	
 	public Ventana() {
 		getContentPane().setLayout(new FlowLayout());
@@ -36,6 +39,35 @@ class Ventana extends JFrame implements ActionListener {
 		txtFTempEntrada=new JTextField(10);
 			txtFTempEntrada.setFont(new Font("Time New Romans", 0, 15));
 			txtFTempEntrada.setHorizontalAlignment((int) CENTER_ALIGNMENT);
+			txtFTempEntrada.addKeyListener(new KeyListener() {
+				@Override
+				public void keyTyped(KeyEvent e) {}
+				
+				@Override
+				public void keyReleased(KeyEvent e) {
+					if(!Character.isDigit(e.getKeyCode()) && e.getKeyCode()!=8 && e.getKeyCode()!=46){
+						JOptionPane.showMessageDialog(rootPane, "Solo puedes ingresar numeros.");
+						if(txtFTempEntrada.getText().length()==0)
+							txtFTempEntrada.setText("");
+						else{
+							//txtFTempEntrada.setText(txtFTempEntrada.getText().substring(0, txtFTempEntrada.getText().length()-1));	
+							txtFTempEntrada.setText(respaldo);	
+						}
+					}
+					else
+						respaldo=txtFTempEntrada.getText();
+				}
+				
+				@Override
+				public void keyPressed(KeyEvent e) {
+					if(e.getKeyCode()==46){
+						if(txtFTempEntrada.getText().contains(".")){
+							JOptionPane.showMessageDialog(rootPane, "Solo puedes ingresar valores reales.");
+							txtFTempEntrada.setText(respaldo);
+						}
+					}
+				}
+			});
 		add(txtFTempEntrada);
 		
 		
@@ -187,9 +219,13 @@ class Ventana extends JFrame implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		
-	}
+	public void actionPerformed(ActionEvent arg0) {}
+	@Override
+	public void keyPressed(KeyEvent e) {}
+	@Override
+	public void keyReleased(KeyEvent e) {}
+	@Override
+	public void keyTyped(KeyEvent e) {}
 }
 public class Prueba {
 
