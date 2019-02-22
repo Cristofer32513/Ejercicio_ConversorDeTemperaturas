@@ -104,102 +104,65 @@ class Ventana extends JFrame implements ActionListener {
 			comboSalida.addItem("-------------------");
 			comboSalida.setFont(new Font("Time New Romans", 0, 15));
 			comboSalida.setEnabled(false);
-			comboSalida.setSelectedItem("-------------------");
 			comboSalida.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					double tempEntrada=Double.parseDouble(txtFTempEntrada.getText());
-					double tempSalida;
+					double tempSalida=0;
 					
 					
-					if(comboSalida.getSelectedItem()==null){
+					if(comboSalida.getSelectedItem()==null)
 						txtFTempSalida.setText("");
-					}
 					else{
-						if(comboSalida.getSelectedItem().equals("-------------------")){
+						if(comboSalida.getSelectedItem().equals("-------------------"))
 							txtFTempSalida.setText("");
-							System.out.println("blanco");
-						}
-						else if(comboEntrada.getSelectedItem().equals("° Centigrados") &&
-								comboSalida.getSelectedItem().equals("° Fahrenheit")){
-							tempSalida=(tempEntrada*1.8)+32;
+						else{
+							if(comboEntrada.getSelectedItem().equals("° Centigrados") &&
+									comboSalida.getSelectedItem().equals("° Fahrenheit"))
+								tempSalida=(tempEntrada*1.8)+32;
+							else if(comboEntrada.getSelectedItem().equals("° Centigrados") &&
+									comboSalida.getSelectedItem().equals("° Kelvil"))
+								tempSalida=tempEntrada+273.15;
+							else if(comboEntrada.getSelectedItem().equals("° Centigrados") &&
+									comboSalida.getSelectedItem().equals("° Rankine"))
+								tempSalida=(tempEntrada*1.8)+491.67;
+							
+							
+							
+							else if(comboEntrada.getSelectedItem().equals("° Fahrenheit") &&
+									comboSalida.getSelectedItem().equals("° Centigrados"))
+								tempSalida=(tempEntrada-32)/1.8;
+							else if(comboEntrada.getSelectedItem().equals("° Fahrenheit") &&
+									comboSalida.getSelectedItem().equals("° Kelvil"))
+								tempSalida=(tempEntrada+459.67)/1.8;
+							else if(comboEntrada.getSelectedItem().equals("° Fahrenheit") &&
+									comboSalida.getSelectedItem().equals("° Rankine"))
+								tempSalida=tempEntrada+459.67;
+							
+							
+							
+							else if(comboEntrada.getSelectedItem().equals("° Kelvil") &&
+									comboSalida.getSelectedItem().equals("° Centigrados"))
+								tempSalida=tempEntrada-273.15;
+							else if(comboEntrada.getSelectedItem().equals("° Kelvil") &&
+									comboSalida.getSelectedItem().equals("° Fahrenheit"))
+								tempSalida=((tempEntrada-273.15)*1.8)+32;
+							else if(comboEntrada.getSelectedItem().equals("° Kelvil") &&
+									comboSalida.getSelectedItem().equals("° Rankine"))
+								tempSalida=tempEntrada*1.8;
+							
+							
+							
+							else if(comboEntrada.getSelectedItem().equals("° Rankine") &&
+									comboSalida.getSelectedItem().equals("° Centigrados"))
+								tempSalida=(tempEntrada-491.67)/1.8;
+							else if(comboEntrada.getSelectedItem().equals("° Rankine") &&
+									comboSalida.getSelectedItem().equals("° Fahrenheit"))
+								tempSalida=tempEntrada-459.67;
+							else if(comboEntrada.getSelectedItem().equals("° Rankine") &&
+									comboSalida.getSelectedItem().equals("° Kelvil"))
+								tempSalida=tempEntrada/1.8;
 							txtFTempSalida.setText(String.valueOf(tempSalida));
-							System.out.println("CF");
-						}
-						else if(comboEntrada.getSelectedItem().equals("° Centigrados") &&
-								comboSalida.getSelectedItem().equals("° Kelvil")){
-							tempSalida=tempEntrada+273.15;
-							txtFTempSalida.setText(String.valueOf(tempSalida));
-							System.out.println("CK");
-						}
-						else if(comboEntrada.getSelectedItem().equals("° Centigrados") &&
-								comboSalida.getSelectedItem().equals("° Rankine")){
-							tempSalida=(tempEntrada*1.8)+491.67;
-							txtFTempSalida.setText(String.valueOf(tempSalida));
-							System.out.println("CR");
-						}
-						
-						
-						
-						else if(comboEntrada.getSelectedItem().equals("° Fahrenheit") &&
-								comboSalida.getSelectedItem().equals("° Centigrados")){
-							tempSalida=(tempEntrada-32)/1.8;
-							txtFTempSalida.setText(String.valueOf(tempSalida));
-							System.out.println("FC");
-						}
-						else if(comboEntrada.getSelectedItem().equals("° Fahrenheit") &&
-								comboSalida.getSelectedItem().equals("° Kelvil")){
-							tempSalida=(tempEntrada+459.67)/1.8;
-							txtFTempSalida.setText(String.valueOf(tempSalida));
-							System.out.println("FK");
-						}
-						else if(comboEntrada.getSelectedItem().equals("° Fahrenheit") &&
-								comboSalida.getSelectedItem().equals("° Rankine")){
-							tempSalida=tempEntrada+459.67;
-							txtFTempSalida.setText(String.valueOf(tempSalida));
-							System.out.println("FR");
-						}
-						
-						
-						
-						else if(comboEntrada.getSelectedItem().equals("° Kelvil") &&
-								comboSalida.getSelectedItem().equals("° Centigrados")){
-							tempSalida=tempEntrada-273.15;
-							txtFTempSalida.setText(String.valueOf(tempSalida));
-							System.out.println("KC");
-						}
-						else if(comboEntrada.getSelectedItem().equals("° Kelvil") &&
-								comboSalida.getSelectedItem().equals("° Fahrenheit")){
-							tempSalida=((tempEntrada-273.15)*1.8)+32;
-							txtFTempSalida.setText(String.valueOf(tempSalida));
-							System.out.println("KF");
-						}
-						else if(comboEntrada.getSelectedItem().equals("° Kelvil") &&
-								comboSalida.getSelectedItem().equals("° Rankine")){
-							tempSalida=tempEntrada*1.8;
-							txtFTempSalida.setText(String.valueOf(tempSalida));
-							System.out.println("KR");
-						}
-						
-						
-						
-						else if(comboEntrada.getSelectedItem().equals("° Rankine") &&
-								comboSalida.getSelectedItem().equals("° Centigrados")){
-							tempSalida=(tempEntrada-491.67)/1.8;
-							txtFTempSalida.setText(String.valueOf(tempSalida));
-							System.out.println("RC");
-						}
-						else if(comboEntrada.getSelectedItem().equals("° Rankine") &&
-								comboSalida.getSelectedItem().equals("° Fahrenheit")){
-							tempSalida=tempEntrada-459.67;
-							txtFTempSalida.setText(String.valueOf(tempSalida));
-							System.out.println("RF");
-						}
-						else if(comboEntrada.getSelectedItem().equals("° Rankine") &&
-								comboSalida.getSelectedItem().equals("° Kelvil")){
-							tempSalida=tempEntrada/1.8;
-							txtFTempSalida.setText(String.valueOf(tempSalida));
-							System.out.println("RK");
 						}
 					}
 				}
