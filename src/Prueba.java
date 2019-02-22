@@ -17,7 +17,7 @@ class Ventana extends JFrame implements ActionListener, KeyListener {
 	
 	public Ventana() {
 		getContentPane().setLayout(new FlowLayout());
-		setTitle("Conversor Temperaturas");
+		setTitle("Conversor de Temperaturas");
 		setSize(355, 170);
 		setLocationRelativeTo(null);
 		setResizable(false);
