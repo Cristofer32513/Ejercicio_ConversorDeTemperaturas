@@ -35,6 +35,7 @@ class Ventana extends JFrame implements ActionListener {
 		
 		txtFTempEntrada=new JTextField(10);
 			txtFTempEntrada.setFont(new Font("Time New Romans", 0, 15));
+			txtFTempEntrada.setHorizontalAlignment((int) CENTER_ALIGNMENT);
 		add(txtFTempEntrada);
 		
 		
@@ -181,6 +182,7 @@ class Ventana extends JFrame implements ActionListener {
 		txtFTempSalida=new JTextField(10);
 			txtFTempSalida.setFont(new Font("Time New Romans", 0, 15));
 			txtFTempSalida.setEditable(false);
+			txtFTempSalida.setHorizontalAlignment((int) CENTER_ALIGNMENT);
 		add(txtFTempSalida);
 	}
 
