@@ -26,6 +26,14 @@ class Ventana extends JFrame {
 			txtFTempEntrada.setFont(new Font("Time New Romans", 0, 15));
 		add(txtFTempEntrada);
 		
+		comboEntrada=new JComboBox<String>();
+			comboEntrada.addItem("-------------------");
+			comboEntrada.addItem("° Centigrados");
+			comboEntrada.addItem("° Fahrenheit");
+			comboEntrada.addItem("° Kelvil");
+			comboEntrada.addItem("° Rankine");
+			comboEntrada.setFont(new Font("Time New Romans", 0, 15));
+		add(comboEntrada);
 		
 	}
 }
